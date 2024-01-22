@@ -32,30 +32,55 @@
         // Todo 2.1 Select the unordered list with the id "subjects-taken"
         // Resource: https://dev.to/alternate_robot/dom-selectors-in-javascript-344i
 
+        const subsList = document.getElementById("subjects-taken");
+
+
         // Checkpoint 2.1 What are the other ways to select elements in the DOM?
-        // Answer:
+        // Answer: One common method is using getElementById to select an element by its unique ID. Another approach is using getElementsByClassName or querySelectorAll to select elements based on their class or CSS selectors. Additionally, getElementsByTagName allows you to select elements by their tag name, while modern frameworks like jQuery provide powerful selectors and methods for DOM manipulation.
 
         // Todo 2.2 Set the text of the second list item to "IT102 - Python Fundamentals"
         // Resource: https://www.javascripttutorial.net/javascript-dom/javascript-get-child-element/
+        const secsList = subsList.children[1];
+        secsList.textContent = "IT102 - Python Fundamentals";
 
         // Checkpoint 3.2 What is the difference between innerText, textContent, and innerHTML. When should you use one over the other?
-        // Answer:
+        // Answer: innerText, textContent, and innerHTML are properties in JavaScript used to manipulate the content of HTML elements. innerText sets or returns the visible text content of an element, handling the rendering of styles. textContent returns the raw text content of an element, including invisible whitespaces. innerHTML returns or sets the HTML content inside an element, allowing the insertion of HTML tags.
+        //Use innerText or textContent when working with plain text content to avoid potential security risks associated with HTML injection. Choose innerHTML when you need to manipulate or insert HTML content, but exercise caution and validate input to prevent security vulnerabilities like cross-site scripting (XSS).
+    
+
 
         // Todo 2.3 Create another list item, and add it as a child of the unordered list
         //          Set the text of the list item to your favorite subject
         // Resource: https://www.javascripttutorial.net/dom/manipulating/create-a-dom-element/
+        const newItem = document.createElement('li');
+        const node = document.createTextNode("CS107L");
+        newItem.appendChild(node);
+        newItem.classList.add('newly-created');
+        newItem.setAttribute("id", "favorite-subject"); 
+        subsList.appendChild(newItem);
+        
 
         // Todo 2.4 Set the id attribute of the list item you created to "favorite-subject".
         //          Set the class of the list item to "newly-created"
+        newItem.setAttribute("class", "newly-created")
 
         // Todo 2.5 Delete the third list item in the unordered list
+        const thirdListItem = subsList.children[2];
+        subsList.removeChild(thirdListItem);
 
         // Checkpoint 2.3 What is the difference between node and element?
-        // Answer:
+        // Answer: In the DOM, a node is a generic term for any individual part of a document, such as elements, attributes, or text. An element is a specific type of node that represents the building blocks of an HTML document, corresponding to HTML tags like <div>, <p>, or <a>.
+        
+
 
         // Bonus Todo 2.6 Select the parent of the unordered list.
-
+        let parent = document.querySelector('body');
+        
         // Bonus Todo 2.7 Select the previous sibling of the list item you previously created
+        const currentListItem = document.getElementById("favorite-subject");
+        const previousListItem = currentListItem.previousElementSibling;
+        console.log(previousListItem);
+
     </script>
 </body>
 
